@@ -24,7 +24,7 @@ function BurgerMenu() {
               className="burgerMenu__button-close"
               onClick={() => setIsOpen((prev) => setIsOpen(!prev))}
             >
-              <img className="burgerMenu__close" src={closeBurger} alt="" />
+              <img className="burgerMenu__close" src={closeBurger} alt="Закрытие бургер-меню" />
             </button>
 
             <div className="burgerMenu__navLink">

@@ -1,18 +1,18 @@
-.aboutMe__container {
+.aboutMe {
   display: flex;
   justify-content: space-between;
   margin: 66px 0 101px;
 }
 
 @media screen and (max-width: 850px) {
-  .aboutMe__container {
+  .aboutMe {
     gap: 49px;
     margin-bottom: 90px;
   }
 }
 
-@media screen and (max-width: 550px) {
-  .aboutMe__container {
+@media screen and (max-width: 660px) {
+  .aboutMe {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -143,7 +143,7 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 655px) {
   .aboutMe__photo {
     width: 292px;
     height: 352px;

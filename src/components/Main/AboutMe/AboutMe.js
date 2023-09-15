@@ -10,7 +10,6 @@ function AboutMe() {
       heading={"Студент"}
       content={
         <section className="aboutMe">
-          <div className="aboutMe__container">
             <div className="aboutMe__text-container">
               <h2 className="aboutMe__title">Виталий</h2>
               <h3 className="aboutMe__subtitle">
@@ -36,7 +35,6 @@ function AboutMe() {
               src={photoMe}
               alt="Фотография студента"
             />
-          </div>
         </section>
       }
     />

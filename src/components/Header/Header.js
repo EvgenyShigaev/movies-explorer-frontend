@@ -6,14 +6,14 @@ import "./Header.css";
 
 function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__container">
         <Link to="/" className="header__logo">
           <img src={logo} alt="Логотип" />
         </Link>
         <AuthBtns />
       </div>
-    </div>
+    </header>
   );
 }
 

@@ -1,0 +1,14 @@
+.showMore {
+  display: flex;
+  justify-content: center;
+  background-color: #202020;
+  min-height: 140px;
+  width: 89.063%;
+  margin: 90px auto 0;
+}
+
+@media screen and (max-width:898px) {
+  .showMore {
+    margin-top: 0;
+  }
+}

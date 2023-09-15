@@ -1,0 +1,124 @@
+.moviesCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 6px;
+  background: #222;
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, .08);
+  list-style-type: none;
+  padding: 18px 0 18px;
+}
+
+@media screen and (max-width: 898px) {
+  .moviesCard:nth-child(n+9):nth-child(-n+12) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .moviesCard {
+    padding: 14px 0 14px;
+  }
+
+  .moviesCard:nth-child(n+6):nth-child(-n+12) {
+    display: none;
+  }
+
+  .moviesCard__saved:nth-child(n+3) {
+    display: none;
+  }
+}
+
+.moviesCard__container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 0;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+@media screen and (max-width: 550px) {
+  .moviesCard__container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+.moviesCard__text {
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 120%;
+  margin: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .moviesCard__text {
+    font-size: 12px;
+    line-height: 150%;
+  }
+}
+
+.moviesCard__time {
+  color: #8B8B8B;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 138.462%;
+  margin: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .moviesCard__time {
+    font-size: 10px;
+    line-height: 180%;
+  }
+}
+
+.moviesCard__image {
+  display: block;
+  width: 100%;
+  height: 200px;
+  margin: 18px 0 18px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 898px) {
+  .moviesCard__image {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .moviesCard__image {
+    margin: 14px 0 14px;
+    height: 168px;
+  }
+}
+
+.moviesCard__btnLiked {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.moviesCard__btnDltCard {
+  display: flex;
+  justify-content: center;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 91.667%;
+  border: none;
+  border-radius: 30px;
+  background: #313131;
+  flex-shrink: 0;
+  margin: 0 auto;
+  padding: 9px 15px;
+  cursor: pointer;
+}

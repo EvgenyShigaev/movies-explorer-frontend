@@ -1,0 +1,108 @@
+.burgerMenu {
+  display: none;
+}
+
+@media screen and (max-width:925px) {
+  .burgerMenu {
+    display: block;
+  }
+}
+
+@media screen and (max-width:925px) {
+  .burgerMenu__btn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width:525px) {
+  .burgerMenu__img {
+    width: 40px;
+    height: 43px;
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .burgerMenu__container {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .burgerMenu__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    width: 67.7%;
+    height: 100vh;
+    background-color: #202020;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .burgerMenu__box {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .burgerMenu__button-close {
+    position: absolute;
+    background: none;
+    border: none;
+    top: 22.44px;
+    right: 22.44px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .burgerMenu__button-close {
+    top: 13.44px;
+    right: 13.44px;
+  }
+}
+
+@media screen and (max-width:925px) {
+  .burgerMenu__navLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin-top: 159px;
+  }
+}
+
+@media screen and (max-width:525px) {
+  .burgerMenu__navLink {
+    gap: 24px;
+    margin-top: 146px;
+  }
+}
+
+@media screen and (max-width:925px) {
+  .burgerMenu__start {
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+  }
+}

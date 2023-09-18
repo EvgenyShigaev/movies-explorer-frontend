@@ -6,10 +6,12 @@ import Techs from "./Techs/Techs";
 import AboutMe from "./AboutMe/AboutMe";
 import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
+import AuthBtns from "./AuthBtns/AuthBtns"
 
-function Main() {
+function Main(isLoggedIn) {
   return (
     <>
+     {isLoggedIn ? null : <AuthBtns />}
       <Header />
       <main className="main">
         <Promo />

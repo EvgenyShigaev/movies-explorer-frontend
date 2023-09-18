@@ -5,11 +5,12 @@ import logo from "../../images/logo.svg";
 import accountIcon from "../../images/accountIcon.svg";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./Navigation.css";
+import { BASE_ROUTE } from "../../utils/constants";
 
 function Navigation() {
   return (
     <nav className="navigation">
-      <Link to="/" className="header__logo">
+      <Link to={BASE_ROUTE} className="header__logo">
         <img src={logo} alt="Логотип" />
       </Link>
       <div className="navigation__container">

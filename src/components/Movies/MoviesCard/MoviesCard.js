@@ -1,186 +1,72 @@
 import React from "react";
-import movies1 from "../../../images/movies1.png";
-import movies2 from "../../../images/movies2.png";
-import movies3 from "../../../images/movies3.png";
-import movies4 from "../../../images/movies4.png";
-import movies5 from "../../../images/movies5.png";
-import movies6 from "../../../images/movies6.png";
-import movies7 from "../../../images/movies7.png";
-import movies8 from "../../../images/movies8.png";
-import movies9 from "../../../images/movies9.png";
-import movies10 from "../../../images/movies10.png";
-import movies11 from "../../../images/movies11.png";
-import movies12 from "../../../images/movies12.png";
-import saved from "../../../images/saved.svg";
+import { Link } from "react-router-dom";
 import "./MoviesCard.css";
 
-function MoviesCard() {
+function MoviesCard({
+  card,
+  savedMovies,
+  isSavedMovies,
+  findSavedMovies,
+  onAddCard,
+  onDltCard,
+}) {
+  const displayedMovieDuration = (duration) => {
+    const hours = Math.floor(duration / 60);
+    const minutes = duration % 60;
+    return `${hours}ч ${minutes}м`;
+  };
+
+  const changeLikeType = () => {
+    if (findSavedMovies) {
+      onDltCard(savedMovies.filter((i) => i.movieId === card.id)[0]);
+    } else {
+      onAddCard(card);
+    }
+  };
+
+  const deleteCard = () => {
+    onDltCard(card);
+  };
+
   return (
     <>
       <li className="moviesCard">
         <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
+          <h3 className="moviesCard__text">{card.nameRU}</h3>
+          <h3 className="moviesCard__time">
+            {displayedMovieDuration(card.duration)}
+          </h3>
         </div>
-        <img
-          className="moviesCard__image"
-          src={movies1}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnLiked">
-          <img src={saved} alt="Сохраненный фильм" />
-        </button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies2}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnLiked">
-          <img src={saved} alt="Сохраненный фильм" />
-        </button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies3}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnDltCard">Сохранить</button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies4}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnDltCard">Сохранить</button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies5}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnDltCard">Сохранить</button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies6}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnLiked">
-          <img src={saved} alt="Сохраненный фильм" />
-        </button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies7}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnLiked">
-          <img src={saved} alt="Сохраненный фильм" />
-        </button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies8}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnDltCard">Сохранить</button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies9}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnDltCard">Сохранить</button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies10}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnDltCard">Сохранить</button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies11}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnLiked">
-          <img src={saved} alt="Сохраненный фильм" />
-        </button>
-      </li>
-
-      <li className="moviesCard">
-        <div className="moviesCard__container">
-          <h3 className="moviesCard__text">В погоне за Бенкси</h3>
-          <h3 className="moviesCard__time">0ч 42м</h3>
-        </div>
-        <img
-          className="moviesCard__image"
-          src={movies12}
-          alt="Картинка фильма"
-        />
-        <button className="moviesCard__btnDltCard">Сохранить</button>
+        <Link to={card.trailerLink} target="_blank">
+          <img
+            className="moviesCard__image"
+            src={
+              typeof card.image === "string"
+                ? card.image
+                : `https://api.nomoreparties.co/${card.image.url}`
+            }
+            alt={card.nameRU}
+          />
+        </Link>
+        {isSavedMovies ? (
+          <button
+            className="moviesCard__btn moviesCard__btnDltCard"
+            onClick={deleteCard}
+            type="button"
+            aria-label="Удалить фильм"
+          />
+        ) : (
+          <button
+            className={
+              findSavedMovies
+                ? "moviesCard__btn moviesCard__btnLiked"
+                : "moviesCard__btn moviesCard__btnLike"
+            }
+            onClick={changeLikeType}
+            type="button"
+            aria-label="Сохранить"
+          />
+        )}
       </li>
     </>
   );

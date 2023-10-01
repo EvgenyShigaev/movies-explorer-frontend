@@ -1,21 +1,8 @@
-import { BASE_URL, MOVIES, SIGNIN, SIGNUP, USERS_ME } from "./constants";
+import { BASE_URL, MOVIES, SIGNIN, SIGNUP, USERS_ME } from "../utils/constants";
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 }
-
-export const checkToken = (token) => {
-  return fetch(`${BASE_URL}${USERS_ME}`, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  }).then((res) => {
-    return checkResponse(res);
-  });
-};
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}${SIGNUP}`, {
@@ -94,20 +81,42 @@ export const likeMovie = (movie) => {
   return fetch(`${BASE_URL}${MOVIES}`, {
     method: "POST",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(movie),
-  }).then((res) => {
-    return checkResponse(res);
-  });
+    body: JSON.stringify({
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: `https://api.nomoreparties.co/${movie.image.url}`,
+      trailerLink: movie.trailerLink,
+      thumbnail: `https://api.nomoreparties.co/${movie.image.formats.thumbnail.url}`,
+      movieId: movie.id,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
+    }),
+  }).then((res) => checkResponse(res));
 };
 
 export const deleteMovie = (id) => {
   const token = localStorage.getItem("token");
   return fetch(`${BASE_URL}${MOVIES}/${id}`, {
     method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    return checkResponse(res);
+  });
+};
+
+export const checkToken = (token) => {
+  return fetch(`${BASE_URL}${USERS_ME}`, {
+    method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

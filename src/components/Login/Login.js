@@ -1,60 +1,60 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
-import { BASE_ROUTE, MOVIES, SIGN_UP } from "../../utils/constants";
-import * as mainApi from "../../utils/MainApi";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import * as mainApi from "../../utils/MainApi";
 import AuthForm from "../AuthForm/AuthForm";
+import { MOVIES } from "../../utils/constants";
+import "./Login.css";
+import "../Register/Register.css";
 
-function Login(isLoggedIn, setIsLoggedIn) {
+function Login({
+  setIsLoggedIn,
+  setIsLoading,
+  isLoading,
+  handleAuthError,
+  displayError,
+}) {
   const navigate = useNavigate();
+  const { values, handleChange, errors, isValid } = useFormAndValidation({
+    email: "",
+    password: "",
+  });
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate(BASE_ROUTE);
-  //   }
-  // }, [isLoggedIn]);
-
-  function handleLogin({ email, password }) {
-    mainApi
-      .login(email, password)
-      .then((res) => {
-        localStorage.setItem("token", res.token);
-        setIsLoggedIn(true);
-        navigate(MOVIES);
-      })
-      .catch((error) => {
-        // setIsLoggedIn(false);
-        return error === "Ошибка: 400"
-          ? console.log("ошибка 1")
-          : console.log("ошибка 2");
-      });
+  async function handleLogin({ email, password }) {
+    setIsLoading(true);
+    try {
+      const res = await mainApi.login(email, password);
+      setIsLoading(false);
+      localStorage.setItem("token", res.token);
+      setIsLoggedIn(true);
+      navigate(MOVIES);
+    } catch (err) {
+      handleAuthError(err);
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormAndValidation({
-      email: "",
-      password: "",
-    });
-
-  useEffect(() => {
-    resetForm({}, {}, false);
-  }, [resetForm]);
-
-  const handleSubmit = (evt) => {
+  function handleSubmit(evt) {
     evt.preventDefault();
     handleLogin(values);
-  };
+  }
 
   return (
     <AuthForm
-      onSubmit={handleSubmit}
-      resetForm={resetForm}
-      values={values}
       authTitle={"Рады видеть"}
+      onSubmit={handleSubmit}
+      onChange={handleChange}
+      isLoading={isLoading}
+      displayError={displayError}
+      isValid={isValid}
+      values={values}
       authInput={
         <>
-          <label className="auth__label">E-mail</label>
+          <label htmlFor="email" className="auth__label">
+            E-mail
+          </label>
           <input
             className="auth__input"
             placeholder=""
@@ -62,12 +62,16 @@ function Login(isLoggedIn, setIsLoggedIn) {
             name="email"
             type="email"
             autoComplete="off"
-            onChange={handleChange}
             pattern="^\S+@\S+\.\S+$"
-            value={values.email || ""}
+            value={values?.email || ""}
             required
+            onChange={handleChange}
           />
-          <label className="auth__label">Пароль</label>
+          <span className="auth__error">{errors.email}</span>
+
+          <label htmlFor="name" className="auth__label">
+            Пароль
+          </label>
           <input
             className="auth__input"
             placeholder=""
@@ -75,17 +79,18 @@ function Login(isLoggedIn, setIsLoggedIn) {
             name="password"
             type="password"
             autoComplete="off"
-            onChange={handleChange}
-            value={values.password || ""}
+            value={values?.password || ""}
             required
+            onChange={handleChange}
           />
+          <span className="auth__error">{errors.password}</span>
         </>
       }
       authBtnText={"Войти"}
       authQuestion={
         <p className="auth__check">
           Ещё не зарегистрированы?
-          <Link to={SIGN_UP} className="auth__link">
+          <Link to="/sign-up" className="auth__link">
             Регистрация
           </Link>
         </p>

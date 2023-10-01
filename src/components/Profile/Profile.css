@@ -1,5 +1,3 @@
-/* .profile {} */
-
 .profile__title {
   color: #FFF;
   text-align: center;
@@ -79,8 +77,14 @@
   cursor: pointer;
 }
 
+.profile__edit--blocked {
+  color: #c2c2c2;
+  opacity: .4;
+  pointer-events: none;
+}
+
 .profile__edit:hover {
-  opacity: 0.8;
+  opacity: .8;
 }
 
 @media screen and (max-width:898px) {
@@ -96,7 +100,11 @@
   }
 }
 
-.profile__logout {
+.profile__cancel {
+  margin-bottom: 30px;
+}
+
+.profile__button {
   color: #EE3465;
   text-align: center;
   font-size: 13px;
@@ -116,4 +124,13 @@
   .profile__logout {
     font-size: 12px;
   }
+}
+
+.profile__editError {
+  color: #FF004C;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 20px;
 }

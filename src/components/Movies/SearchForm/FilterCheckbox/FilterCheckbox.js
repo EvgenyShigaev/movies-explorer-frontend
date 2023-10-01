@@ -1,14 +1,16 @@
 import React from "react";
 import "./FilterCheckbox.css";
 
-function FilterCheckbox() {
+function FilterCheckbox({ toggleShortMovies, shortMovies }) {
   return (
     <section className="filterCheckbox">
       <div className="filterCheckbox__container">
         <input
+          className="filterCheckbox__input"
           id="filterCheckbox-input"
           type="checkbox"
-          className="filterCheckbox__input"
+          onChange={toggleShortMovies}
+          checked={shortMovies}
         ></input>
         <label
           className="filterCheckbox__label"

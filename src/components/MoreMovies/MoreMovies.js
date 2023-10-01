@@ -1,10 +1,16 @@
 import React from "react";
 import "./MoreMovies.css";
 
-function MoreMovies() {
+function MoreMovies({ filteredMovies, displayedMovies, adjustMoreMovies }) {
   return (
     <div className="moreMovies">
-      <button className="moreMovies__button">Ещё</button>
+      {filteredMovies.length > displayedMovies ? (
+        <button className="moreMovies__button" onClick={adjustMoreMovies}>
+          Ещё
+        </button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

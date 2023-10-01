@@ -39,3 +39,7 @@
     margin-top: 34px;
   }
 }
+
+.moviesList__searchError {
+  color: #EE3465;
+}

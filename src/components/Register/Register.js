@@ -1,30 +1,39 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Register.css";
-import { BASE_ROUTE, SIGN_IN, MOVIES } from "../../utils/constants";
+import { SIGN_IN, MOVIES } from "../../utils/constants";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import * as mainApi from "../../utils/MainApi";
 import AuthForm from "../AuthForm/AuthForm";
+import "./Register.css";
 
-function Register({ isLoggedIn, setIsLoggedIn }) {
+function Register({
+  setIsLoggedIn,
+  setIsLoading,
+  isLoading,
+  handleAuthError,
+  displayError,
+}) {
   const navigate = useNavigate();
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation({
+      name: "",
+      email: "",
+      password: "",
+    });
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate(BASE_ROUTE);
-    }
-  }, [isLoggedIn]);
-
-  function handleRegister({ name, email, password }) {
-    mainApi
-      .register(name, email, password)
-      .then((res) => {
-        console.log(res);
+  async function handleRegister({ name, email, password }) {
+    setIsLoading(true);
+    try {
+      const res = await mainApi.register(name, email, password);
+      if (res) {
         handleRedirect({ email, password });
-      })
-      .catch((error) => {
-        return error === "Ошибка: 409" ? console.log(error) : null;
-      });
+      }
+    } catch (err) {
+      handleAuthError(err);
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   function handleRedirect({ email, password }) {
@@ -39,33 +48,29 @@ function Register({ isLoggedIn, setIsLoggedIn }) {
       })
       .catch((error) => {
         setIsLoggedIn(false);
-        return error === "Ошибка: 400"
-        ? console.log("ошибка 1")
-        : console.log("ошибка 2");
+        return console.log(error === "Ошибка: 400");
       });
   }
-
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormAndValidation({
-      name: "",
-      email: "",
-      password: "",
-    });
-
-  useEffect(() => {
-    resetForm({}, {}, false);
-  }, [resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();
     handleRegister(values);
   }
 
+  useEffect(() => {
+    resetForm({}, {}, false);
+  }, [resetForm]);
+
   return (
     <AuthForm
       onSubmit={handleSubmit}
       resetForm={resetForm}
       values={values}
+      onChange={handleChange}
+      isLoading={isLoading}
+      displayError={displayError}
+      method="POST"
+      isValid={isValid}
       authTitle={"Добро пожаловать"}
       authInput={
         <>
@@ -79,9 +84,11 @@ function Register({ isLoggedIn, setIsLoggedIn }) {
             autoComplete="off"
             pattern="[a-zA-ZАа-яёА-ЯЁ\s\-]{2,30}$"
             onChange={handleChange}
-            value={values.name || ""}
+            value={values?.name || ""}
             required
           />
+
+          <span className="auth__error">{errors.name}</span>
 
           <label className="auth__label">E-mail</label>
           <input
@@ -93,9 +100,11 @@ function Register({ isLoggedIn, setIsLoggedIn }) {
             autoComplete="off"
             pattern="^\S+@\S+\.\S+$"
             onChange={handleChange}
-            value={values.email || ""}
+            value={values?.email || ""}
             required
           />
+
+          <span className="auth__error">{errors.email}</span>
 
           <label className="auth__label">Password</label>
           <input
@@ -106,9 +115,11 @@ function Register({ isLoggedIn, setIsLoggedIn }) {
             type="password"
             autoComplete="off"
             onChange={handleChange}
-            value={values.password || ""}
+            value={values?.password || ""}
             required
           />
+
+          <span className="auth__error">{errors.password}</span>
         </>
       }
       authBtnText={"Зарегистрироваться"}

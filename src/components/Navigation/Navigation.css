@@ -1,0 +1,123 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 74px;
+  width: 89.063%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 925px) {
+  .navigation {
+    width: 91.25%;
+  }
+}
+
+.navigation__container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 50px;
+  margin: 0;
+}
+
+@media screen and (max-width: 925px) {
+  .navigation__container {
+    display: none;
+  }
+}
+
+.navigation__container-movies {
+  display: flex;
+  gap: 20px;
+}
+
+.navigation__movies {
+  color: #FFF;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 128.571%;
+  text-decoration: none;
+}
+
+.navigation__movies:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 925px) {
+  .navigation__movies {
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 18px;
+    line-height: normal;
+  }
+}
+
+.navigation__savedMovies {
+  color: #FFF;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 128.571%;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 925px) {
+  .navigation__savedMovies {
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.navigation__savedMovies:hover {
+  opacity: 0.7;
+}
+
+.navigation__container-account {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 13px;
+  width: 100px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 925px) {
+  .navigation__container-account {
+    margin-top: 593px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .navigation__container-account {
+    margin-top: 420px;
+  }
+}
+
+.navigation__account {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 114.286%;
+  text-decoration: none;
+  margin: 0;
+}
+
+.navigation__account:hover {
+  opacity: 0.7;
+}
+
+.navigation__account-icon {
+  background: #313131;
+  border-radius: 6px;
+  width: 10.383px;
+  height: 10.669px;
+  flex-shrink: 0;
+  padding: 9.75px 9.81px 9.58px;
+}

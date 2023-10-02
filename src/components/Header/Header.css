@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  width: 100%;
+  min-height: 74px;
+  background-color: #073042;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 89.063%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 850px) {
+  .header__container {
+    width: 92.063%;
+  }
+}
+
+.header__logo:hover {
+  opacity: .8;
+}

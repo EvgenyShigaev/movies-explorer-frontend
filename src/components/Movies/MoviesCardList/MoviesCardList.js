@@ -23,13 +23,13 @@ function MoviesCardList({
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
   };
 
-  const adjustDisplayedCards = () => {
+   const adjustDisplayedCards = () => {
     const innerWidth = window.innerWidth;
-    if (innerWidth >= 1280) {
+    if (innerWidth >= 899) {
       setDisplayedMovies(12);
-    } else if (innerWidth >= 768) {
+    } else if (innerWidth >= 670 && innerWidth <= 899) {
       setDisplayedMovies(8);
-    } else if (innerWidth >= 320 && innerWidth <= 480) {
+    } else if (innerWidth <= 670) {
       setDisplayedMovies(5);
     } else {
       setDisplayedMovies(0);
@@ -38,11 +38,11 @@ function MoviesCardList({
 
   const adjustMoreMovies = () => {
     const innerWidth = window.innerWidth;
-    if (innerWidth >= 1280) {
+    if (innerWidth >= 899) {
       setDisplayedMovies(displayedMovies + 3);
-    } else if (innerWidth >= 768) {
+    } else if (innerWidth >= 670 && innerWidth <= 899) {
       setDisplayedMovies(displayedMovies + 2);
-    } else if (innerWidth >= 320 && innerWidth <= 480) {
+    } else if (innerWidth <= 670) {
       setDisplayedMovies(displayedMovies + 2);
     } else {
       setDisplayedMovies(displayedMovies + 1);

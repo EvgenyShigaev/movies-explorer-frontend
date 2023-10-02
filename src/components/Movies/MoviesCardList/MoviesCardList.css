@@ -5,7 +5,7 @@
   padding: 0 30px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 670px) {
   .moviesList__container {
     width: 300px;
     padding: 0;
@@ -32,7 +32,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 670px) {
   .moviesCardList {
     gap: 16px 0;
     grid-template-columns: repeat(1, 1fr);

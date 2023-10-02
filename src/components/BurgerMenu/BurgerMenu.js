@@ -38,18 +38,18 @@ function BurgerMenu() {
             </button>
 
             <div className="burgerMenu__navLink">
-              <NavLink className="burgerMenu__start" to={BASE_ROUTE}>
+              <NavLink className="burgerMenu__start" to={BASE_ROUTE} onClick={() => setIsOpen(false)}>
                 Главная
               </NavLink>
-              <NavLink className="navigation__movies" to={MOVIES}>
+              <NavLink className="navigation__movies" to={MOVIES} onClick={() => setIsOpen(false)}>
                 Фильмы
               </NavLink>
-              <NavLink className="navigation__savedMovies" to={SAVED_MOVIES}>
+              <NavLink className="navigation__savedMovies" to={SAVED_MOVIES} onClick={() => setIsOpen(false)}>
                 Сохранённые фильмы
               </NavLink>
 
               <div className="navigation__container-account">
-                <NavLink className="navigation__account" to={PROFILE}>
+                <NavLink className="navigation__account" to={PROFILE} onClick={() => setIsOpen(false)}>
                   Аккаунт
                 </NavLink>
                 <img

@@ -14,7 +14,7 @@ function Profile({
 }) {
   const currentUser = useContext(CurrentUserContext);
   const { email, name } = currentUser;
-  const { values, handleChange, errors, isValid, setIsValid, setValues } =
+  const { values, handleChange, errors, isValid, setIsValid, setValues, resetForm } =
     useFormAndValidation();
   const [updProfileMsg, setUpdProfileMsg] = useState(false);
   const [isCancelled, setIsCancelled] = useState(false);
@@ -24,14 +24,21 @@ function Profile({
       setValues(currentUser);
       setIsValid(false);
     }
-  }, [currentUser, setValues, setIsValid]);
+  }, [currentUser, setValues, setIsValid ]);
+
+  useEffect(() => {
+    if (values.name === name && values.email === email) {
+      resetForm(values, {}, false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     setIsLoading(true);
     try {
       setIsCancelled(true);
-      handleUpdateUser({
+      await handleUpdateUser({
         name: values.name,
         email: values.email,
       });
@@ -39,6 +46,9 @@ function Profile({
       setTimeout(() => {
         setUpdProfileMsg(false);
       }, 1000);
+    } catch (error) {
+      // Обработка ошибки при обновлении профиля
+      console.log(error);
     } finally {
       setIsLoading(false);
       setIsValid(false);
@@ -52,7 +62,7 @@ function Profile({
     if (displayError) {
       setTimeout(() => {
         setDisplayError("");
-      }, 3000);
+      }, 1000);
     }
   }, [displayError]);
 
@@ -62,6 +72,9 @@ function Profile({
       setCurrentUser(newUser);
     } catch (err) {
       handleAuthError(err);
+      throw err;
+    } finally {
+      handleCancel();
     }
   }
 
@@ -78,15 +91,12 @@ function Profile({
 
   return (
     <section className="profile">
-      <h3 className="profile__title">
-        {updProfileMsg
-          ? "Обновление профиля"
-          : !isCancelled
-          ? "Редактирование"
-          : displayError
-          ? "Ошибка обновления"
-          : `Привет, ${currentUser.name}`}
-      </h3>
+      {updProfileMsg ? (
+        <h3 className="profile__title">Профиль обновлен</h3>
+      ) : (
+        <h3 className="profile__title">Привет, {currentUser.name}</h3>
+      )}
+
       <form onSubmit={handleSubmit}>
         <div className="profile__container">
           <div className="profile__container-name">

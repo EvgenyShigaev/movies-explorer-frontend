@@ -1,0 +1,115 @@
+.technologies {
+  background-color: #272727;
+}
+
+.technologies__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.technologies__title {
+  color: #FFF;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 116%;
+  letter-spacing: -2px;
+  margin: 90px 0 26px;
+}
+
+@media screen and (max-width: 850px) {
+  .technologies__title {
+    margin: 80px 0 22px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .technologies__title {
+
+    font-size: 30px;
+    letter-spacing: -1.2px;
+    margin: 60px 0 24px;
+
+  }
+}
+
+.technologies__subtitle {
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 142.857%;
+  letter-spacing: -0.56px;
+  max-width: 460px;
+  margin: 0 0 100px;
+}
+
+@media screen and (max-width: 850px) {
+  .technologies__subtitle {
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: -0.48px;
+    margin-bottom: 83px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .technologies__subtitle {
+    font-size: 11px;
+    line-height: 145.455%;
+    letter-spacing: -0.44px;
+    margin-bottom: 50px;
+  }
+}
+
+.technologies__types {
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(90px, min-content));
+  margin: 0 auto 100px;
+  padding: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 850px) {
+  .technologies__types {
+    margin-bottom: 90px;
+    grid-template-columns: repeat(auto-fit, minmax(84px, min-content));
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .technologies__types {
+    max-width: 178px;
+    margin-bottom: 70px;
+  }
+}
+
+.technologies__type {
+  min-width: 84px;
+  border-radius: 10px;
+  background: #303030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  height: 60px;
+  letter-spacing: -.56px;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 850px) {
+  .technologies__type {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    height: 57px;
+  }
+}

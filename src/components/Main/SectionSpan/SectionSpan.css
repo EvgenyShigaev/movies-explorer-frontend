@@ -1,0 +1,44 @@
+.sectionSpan__container {
+  display: flex;
+  flex-direction: column;
+  width: 89.063%;
+  margin: 0 auto;
+  padding-top: 110px;
+}
+
+@media screen and (max-width: 850px) {
+  .sectionSpan__container {
+    width: 86.979%;
+    padding-top: 90px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .sectionSpan__container {
+    width: 89.25%;
+    padding-top: 70px;
+  }
+}
+
+.sectionSpan__heading {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  margin: 0 0 23px;
+}
+
+@media screen and (max-width: 550px) {
+  .sectionSpan__heading {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    margin-bottom: 28px;
+  }
+}
+
+.sectionSpan__underline {
+  display: inline-block;
+  border: 1px solid #dadada;
+  width: 100%;
+}

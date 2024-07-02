@@ -1,0 +1,40 @@
+.moreMovies {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #202020;
+  margin: 60px 0 80px;
+}
+
+@media screen and (max-width: 898px) {
+  .moreMovies {
+    margin-top: 50px;
+  }
+}
+
+.moreMovies__button {
+  width: 1140px;
+  height: 36px;
+  width: 89.063%;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 6px;
+  background: #2F2F2F;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.moreMovies__button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 898px) {
+  .moreMovies__button {
+    width: 92.19%;
+  }
+}
